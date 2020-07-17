@@ -18,29 +18,17 @@ module.exports = {
 	output: {
 		path: path.resolve(__dirname, './dist'),
 		filename: '[name].js',
-		// chunkFilename: '[name].[hash:8].js',
 		publicPath: publicPath[env],
 	},
-	// optimization: {
-	// 	splitChunks: {
-	// 		chunks: 'all',
-	// 		name: 'vendor',
-	// 	},
-	// },
 	devServer: {
+		host: '0.0.0.0',
 		port: 3333,
-		disableHostCheck: true,
 		compress: true,
 		hot: true,
 		historyApiFallback: true,
 		open: true,
-		allowedHosts: ['127.0.0.1'],
-		proxy: {
-			'/api/v1': {
-				target: '',
-				changeOrigin: true,
-				secure: false,
-			},
+		headers: {
+			'Access-Control-Allow-Origin': '*',
 		},
 	},
 	resolve: {
