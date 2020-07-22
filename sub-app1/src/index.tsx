@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import { ConfigProvider } from 'antd';
 import store from '@store/index';
 import zhCN from 'antd/es/locale/zh_CN';
@@ -15,14 +15,20 @@ const App: FC = () => {
 		<ConfigProvider locale={zhCN}>
 			<Provider store={store}>
 				<Router>
-					<div>
-						<Switch>
-							{routes.map(item => {
-								return <Route key={item.link} path={item.link} component={item.component} exact />;
-							})}
-							<Route component={NoMatch} />
-						</Switch>
-					</div>
+					<ul>
+						<li>
+							<Link to="/sub2/test1">test1</Link>
+						</li>
+						<li>
+							<Link to="/sub2/test2">test2</Link>
+						</li>
+					</ul>
+					<Switch>
+						{routes.map(item => {
+							return <Route key={item.link} path={item.link} component={item.component} exact />;
+						})}
+						<Route component={NoMatch} />
+					</Switch>
 				</Router>
 			</Provider>
 		</ConfigProvider>
